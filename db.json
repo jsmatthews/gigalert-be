@@ -1,0 +1,72 @@
+{
+    "artists": [
+        {
+            "id": 1,
+            "name": "Artist 1",
+            "description": "A great artist!"
+        },
+        {
+            "id": 2,
+            "name": "Artist 2",
+            "description": "A great artist!"
+        },
+        {
+            "id": 3,
+            "name": "Artist 3",
+            "description": "A great artist!"
+        },
+        {
+            "id": 4,
+            "name": "Artist 4",
+            "description": "A great artist!"
+        },
+        {
+            "id": 5,
+            "name": "Artist 5",
+            "description": "A great artist!"
+        },
+        {
+            "id": 6,
+            "name": "Artist 6",
+            "description": "A great artist!"
+        }
+    ],
+    "events": [
+        {
+            "id": 1,
+            "title": "Artist 1 on tour!",
+            "location": "Tokyo",
+            "artistId": 1,
+            "date": "2018-01-01"
+        },
+        {
+            "id": 3,
+            "title": "event 3",
+            "location": "Singapore",
+            "artistId": 1,
+            "date": "2018-01-03"
+        },
+        {
+            "id": 2,
+            "title": "event 2",
+            "location": "Seoul",
+            "artistId": 1,
+            "date": "2018-01-02"
+        },
+        {
+            "id": 4,
+            "title": "Artist 2 on tour",
+            "location": "Seoul",
+            "artistId": 2,
+            "date": "2018-01-02"
+        }
+    ],
+    "users": [
+        {
+            "name": "James",
+            "email": "james@gmail.com",
+            "password": "james",
+            "id": 1
+        }
+    ]
+}
