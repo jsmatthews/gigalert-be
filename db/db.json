@@ -63,10 +63,10 @@
     ],
     "users": [
         {
+            "id": 1,
             "name": "James",
             "email": "james@gmail.com",
-            "password": "james",
-            "id": 1
+            "password": "james"
         }
     ]
 }
