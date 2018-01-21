@@ -1,5 +1,5 @@
 const { makeExecutableSchema } = require('graphql-tools')
-const { queryUsers } = require('../controllers/UserController')
+const { queryUsers, signUpUser } = require('../controllers/UserController')
 const { queryArtists, addArtist } = require('../controllers/ArtistController')
 const { queryEvents } = require('../controllers/EventController')
 
@@ -9,15 +9,15 @@ const { types: UserTypes, queries: UserQueries, mutations: UserMutations } = req
 
 // The GraphQL schema in string form
 const typeDefs = `
+    ${ArtistTypes}
+    ${EventTypes}
+    ${UserTypes}
+
     type Query {
         ${ArtistQueries}
         ${EventQueries}
         ${UserQueries}
     }
-
-    ${ArtistTypes}
-    ${EventTypes}
-    ${UserTypes}
 
     type Mutation {
         ${ArtistMutations}
@@ -34,6 +34,7 @@ const resolvers = {
         artists: queryArtists,
     },
     Mutation: {
+        signUpUser: signUpUser,
         addArtist: addArtist
     }
 };

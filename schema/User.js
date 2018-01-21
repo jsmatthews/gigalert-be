@@ -12,7 +12,7 @@ const queries = `
 `;
 
 const mutations = `
-    
+    signUpUser(email: String, password: String): User
 `;
 
 module.exports = { types, queries, mutations };

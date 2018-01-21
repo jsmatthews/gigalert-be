@@ -1,4 +1,5 @@
 const { filter } = require('../helpers/filter');
+const fs = require('fs')
 const { db } = require('../db/db');
 
 const queryUsers = (...args) => {
@@ -8,4 +9,12 @@ const queryUsers = (...args) => {
     return filter(users, args[1])
 };
 
-module.exports = { queryUsers }
+const signUpUser = (_, {email, password}) => {
+    const newUser = Object.assign({}, {id: db.users.length + 1, email, password})
+    db.users.push(newUser)
+    const dbString = JSON.stringify(db)
+    let writeError = fs.writeFileSync('./db/db.json', dbString)
+    return newUser;
+}
+
+module.exports = { queryUsers, signUpUser }
