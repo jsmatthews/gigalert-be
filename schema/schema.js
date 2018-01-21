@@ -1,19 +1,29 @@
 const { makeExecutableSchema } = require('graphql-tools')
-const { queryUsers } = require('../controllers/Users')
-const { queryArtists } = require('../controllers/Artists')
-const { queryEvents } = require('../controllers/Events')
+const { queryUsers } = require('../controllers/UserController')
+const { queryArtists, addArtist } = require('../controllers/ArtistController')
+const { queryEvents } = require('../controllers/EventController')
+
+const { types: ArtistTypes, queries: ArtistQueries, mutations: ArtistMutations  } = require('./Artist')
+const { types: EventTypes, queries: EventQueries, mutations: EventMutations } = require('./Event')
+const { types: UserTypes, queries: UserQueries, mutations: UserMutations } = require('./User')
 
 // The GraphQL schema in string form
 const typeDefs = `
     type Query {
-      users(id: Int, name: String, email: String, password: String): [User]
-      artists(id: Int, name: String, description: String): [Artist]
-      events(id: Int, title: String, location: String, artistId: Int, date: String): [Event]
+        ${ArtistQueries}
+        ${EventQueries}
+        ${UserQueries}
     }
 
-    type User {id: Int, name: String, email: String, password: String}
-    type Artist {id: Int, name: String, description: String}
-    type Event {id: Int, title: String, location: String, artistId: Int, date: String}
+    ${ArtistTypes}
+    ${EventTypes}
+    ${UserTypes}
+
+    type Mutation {
+        ${ArtistMutations}
+        ${EventMutations}
+        ${UserMutations}
+    }
 `;
 
 // The resolvers
@@ -22,6 +32,9 @@ const resolvers = {
         users: queryUsers,
         events: queryEvents,
         artists: queryArtists,
+    },
+    Mutation: {
+        addArtist: addArtist
     }
 };
 

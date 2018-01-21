@@ -8,4 +8,8 @@ const queryArtists = (...args) => {
     return filter(artists, args[1])
 };
 
-module.exports = { queryArtists }
+const addArtist = ({id, name, description}) => {
+    console.log(id, name, description)
+};
+
+module.exports = { queryArtists, addArtist }
