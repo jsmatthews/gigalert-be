@@ -1,3 +1,5 @@
+const { types: Artist } = require('./Artist')
+
 const types = `
     type Event {
         id: Int
@@ -11,6 +13,7 @@ const types = `
 
 const queries = `
     events(id: Int, title: String, location: String, artistId: Int, date: String): [Event]
+    event(id: Int, title: String, location: String, artistId: Int, date: String): Event
 `;
 
 const mutations = `

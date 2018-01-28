@@ -1,9 +1,10 @@
+const { db } = require('../db/db');
 const { makeExecutableSchema } = require('graphql-tools')
 const { queryUsers, signUpUser } = require('../controllers/UserController')
-const { queryArtists, addArtist } = require('../controllers/ArtistController')
-const { queryEvents } = require('../controllers/EventController')
+const { queryArtists, queryArtist, queryArtistEvents, addArtist } = require('../controllers/ArtistController')
+const { queryEvents, queryEvent } = require('../controllers/EventController')
 
-const { types: ArtistTypes, queries: ArtistQueries, mutations: ArtistMutations  } = require('./Artist')
+const { types: ArtistTypes, queries: ArtistQueries, mutations: ArtistMutations } = require('./Artist')
 const { types: EventTypes, queries: EventQueries, mutations: EventMutations } = require('./Event')
 const { types: UserTypes, queries: UserQueries, mutations: UserMutations } = require('./User')
 
@@ -31,7 +32,12 @@ const resolvers = {
     Query: {
         users: queryUsers,
         events: queryEvents,
+        event: queryEvent,
         artists: queryArtists,
+        artist: queryArtist,
+    },
+    Artist: {
+        events: queryArtistEvents
     },
     Mutation: {
         signUpUser: signUpUser,
