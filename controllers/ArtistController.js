@@ -1,15 +1,20 @@
 const { filter } = require('../helpers/filter');
 const { db } = require('../db/db');
 
-const queryArtists = (...args) => {
+const queryArtists = (_, ...args) => {
     const artists = db.artists;
     if (artists.length === 0) return []
 
-    return filter(artists, args[1])
+    return artists;
+    // return filter(artists, args)
 };
 
-const addArtist = (_, {id, name, description}) => {
+const queryArtist = (_, { id }) => db.artists.find(artist => artist.id === id);
+
+const queryArtistEvents = ({ id }) => db.events.filter(event => event.artistId === id);
+
+const addArtist = (_, { id, name, description }) => {
     console.log(id, name, description)
 };
 
-module.exports = { queryArtists, addArtist }
+module.exports = { queryArtists, queryArtist, queryArtistEvents, addArtist }
